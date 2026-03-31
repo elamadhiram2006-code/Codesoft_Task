@@ -1,0 +1,111 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    string task[50];
+    bool done[50];
+    int count = 0;
+    int choice;
+
+    while(true)
+    {
+        cout << "\n==============================\n";
+        cout << "        TO - DO LIST\n";
+        cout << "==============================\n";
+        cout << "1. Add Task\n";
+        cout << "2. View Tasks\n";
+        cout << "3. Mark Task Completed\n";
+        cout << "4. Delete Task\n";
+        cout << "5. Exit\n";
+        cout << "------------------------------\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        if(choice == 1)
+        {
+            cin.ignore();
+            cout << "Enter new task: ";
+            getline(cin, task[count]);
+            done[count] = false;
+            count++;
+
+            cout << "Task added successfully!\n";
+        }
+
+        else if(choice == 2)
+        {
+            cout << "\n--------- TASK LIST ---------\n";
+
+            if(count == 0)
+            {
+                cout << "No tasks available\n";
+            }
+
+            for(int i=0;i<count;i++)
+            {
+                cout << i+1 << ". " << task[i];
+
+                if(done[i])
+                    cout << "  [DONE]";
+                else
+                    cout << "  [PENDING]";
+
+                cout << endl;
+            }
+        }
+
+        else if(choice == 3)
+        {
+            int n;
+            cout << "Enter task number to complete: ";
+            cin >> n;
+
+            if(n <= count && n > 0)
+            {
+                done[n-1] = true;
+                cout << "Task marked as completed!\n";
+            }
+            else
+            {
+                cout << "Invalid task number\n";
+            }
+        }
+
+        else if(choice == 4)
+        {
+            int n;
+            cout << "Enter task number to delete: ";
+            cin >> n;
+
+            if(n <= count && n > 0)
+            {
+                for(int i=n-1;i<count-1;i++)
+                {
+                    task[i] = task[i+1];
+                    done[i] = done[i+1];
+                }
+
+                count--;
+                cout << "Task deleted successfully!\n";
+            }
+            else
+            {
+                cout << "Invalid task number\n";
+            }
+        }
+
+        else if(choice == 5)
+        {
+            cout << "Exiting program...\n";
+            break;
+        }
+
+        else
+        {
+            cout << "Invalid choice!\n";
+        }
+    }
+
+    return 0;
+}
