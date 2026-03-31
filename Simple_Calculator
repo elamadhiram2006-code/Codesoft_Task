@@ -1,0 +1,53 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main(){
+    int a,b;
+    int option;
+    int result;
+
+    cout<<"Enter a first number: ";
+    cin>>a;
+
+    cout<<"Enter a second number: ";
+    cin>>b;
+
+    cout<<"Enter a options :\n 1.Addition\n 2.Subraction\n 3.Multiplication\n 4.Division\n";
+    cin>>option;
+
+    cout<<"The chosen option is: "<<option<<endl;
+
+    switch(option){
+        case 1:
+            result = a+b;
+            cout<<"The result value is: "<<result;
+            break;
+
+        case 2:
+            result = a-b;
+            cout<<"The result value is: "<<abs(result);
+            break;
+
+        case 3:
+            result = a*b;
+            cout<<"The result value is: "<<result;
+            break;
+
+        case 4:
+            if(b != 0){
+                double res;
+                res = (double)a/b;
+                cout<<"The result value is: "<<res;
+            }else{
+                cout<<"Undefined..";
+            }
+            break;
+
+        default:
+            cout<<"Invalid option please try again!!";
+            break;
+    }
+
+    return 0;
+}
